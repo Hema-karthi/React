@@ -1,0 +1,11 @@
+.navStyle{
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(236, 222, 231);
+    border-radius: 1rem;
+    border: 0.5rem solid rgb(191, 255, 0);
+    padding: 1rem;
+    margin: 1rem;
+    align-items:center ;
+
+}
