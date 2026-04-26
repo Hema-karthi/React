@@ -1,0 +1,12 @@
+
+.navbarCls {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #bec3d3; /* dark blue */
+  color: rgb(153, 70, 35);
+  padding: 1rem 2rem;
+  font-family: Arial, sans-serif;
+  
+}   

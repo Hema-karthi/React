@@ -1,51 +1,54 @@
-import React from 'react'
-import {BrowserRouter as Router,Routes,Route, Link} from "react-router-dom";
+import React, { useState } from "react";
+import { BrowserRouter as Router, Routes, Route,Link } from "react-router-dom";
 
-import About from "./view/About";
-import Home from "./view/Home";
-import UserProfile from "./view/UserProfile";
-import "./assets/CSS/style.css"
+import StudentLogin from "./components/StudentLogin";
+import StudentDetails from "./components/StudentDetails";
+import UserRegistrationForm from "./components/UserRegistrationForm";
+import "./assets/CSS/Nav.css"
 
-const App = () =>{
-  return(
+const App = () => {
+  const [student, setStudent] = useState({
+    name: "",
+    email: "",
+  });
+
+  return (
     <>
-    <header style= {{ textAlign:"left"}}>Header component </header>
     <Router>
-      <div class= "navStyle">
-      <div>My React App</div>
-      <nav>
-        <ul style ={{display:"flex", gap:"1rem" }}>
-          <li>
-            <Link to="/">ABOUT </Link>
-          </li>
-          <li>
-            <Link to ="/Home">Home</Link>
-          </li>
-          <li>
-            <Link to ="/UserProfile">UserProfile </Link>
-          </li>
+      <div>
+              <div>My React App</div>
+          <nav className="navbarCls">
+            <ul style={{ display: "flex", gap: "2rem",}}>
+              <li><Link to="/StudentLogin">StudentLogin</Link></li>
+              <li><Link to="/StudentDetails">StudentDetails</Link></li>
+              <li><Link to="/UserRegistrationForm">UserRegistrationForm</Link></li>
+            </ul>
+          </nav>
+        </div>
 
-        </ul>
-      </nav>
+      <Routes>
+        <Route
+          path="/StudentLogin"
+          element={
+            <StudentLogin setStudent={setStudent}>
+              <h3>Welcome Student! Please Login</h3> 
+            </StudentLogin>
+          }
+        />
 
-      </div>
-    
-       <Routes>
-        <Route path ="/" element={<About/>} />
-        <Route path ="/Home" element={<Home/>}/>
-        <Route path ="/UserProfile" element={<UserProfile/>}/>
-       </Routes> 
-       <br />
-       <br />
-       <main style= {{ textAlign:"left"}}>Main Component </main>
-       <br />
-       <br />
-       <footer style= {{ textAlign:"left"}}>
-        Footer component
-       </footer>
+        <Route
+          path="/UserRegistrationForm"
+           element={<UserRegistrationForm />}/>
+       <Route
+          path="/SudentDetails"
+          element={<StudentDetails student={student} />} 
 
+        />
+      </Routes>
     </Router>
-    </>
+        </>
+
   );
 };
+
 export default App;
